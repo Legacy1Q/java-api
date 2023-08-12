@@ -10,12 +10,16 @@ import org.springframework.web.server.ResponseStatusException;
 import com.wcci.virtualPetAPI.entity.OrganicCat;
 import com.wcci.virtualPetAPI.entity.VirtualPet;
 import com.wcci.virtualPetAPI.repository.VirtualPetRepository;
+import com.wcci.virtualPetAPI.repository.VirtualPetShelterRepository;
 
 @Service
 public class VirtualPetService {
-
+    
     @Autowired
     private VirtualPetRepository virtualPetRepository;
+
+    @Autowired
+    private VirtualPetShelterRepository virtualPetShelterRepository; //Another repository is autowired here.
 
     public List<VirtualPet> getAllVirtualPets() {
         return this.virtualPetRepository.findAll();
