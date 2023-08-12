@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.wcci.virtualPetAPI.entity.OrganicCat;
+import com.wcci.virtualPetAPI.entity.OrganicDog;
+import com.wcci.virtualPetAPI.entity.RoboticCat;
+import com.wcci.virtualPetAPI.entity.RoboticDog;
 import com.wcci.virtualPetAPI.entity.VirtualPet;
 import com.wcci.virtualPetAPI.repository.VirtualPetRepository;
 import com.wcci.virtualPetAPI.repository.VirtualPetShelterRepository;
