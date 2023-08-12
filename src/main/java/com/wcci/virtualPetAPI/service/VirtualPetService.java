@@ -31,6 +31,18 @@ public class VirtualPetService {
         this.virtualPetRepository.save(organicCat);
     }
 
+    public void addOrganicDog(OrganicDog organicDog) {
+        this.virtualPetRepository.save(organicDog);
+    }
+
+    public void addRoboticCat(RoboticCat roboticCat) {
+        this.virtualPetRepository.save(roboticCat);
+    }
+
+    public void addRoboticDog(RoboticDog roboticDog) {
+        this.virtualPetRepository.save(roboticDog);
+    }
+
     public void updateVirtualPet(long id, VirtualPet updatedVirtualPet) {
         VirtualPet existingVirtualPet = this.virtualPetRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
