@@ -1,5 +1,6 @@
 package com.wcci.virtualPetAPI.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,17 @@ public class RoboticCatService {
         return this.roboticCatRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Robotic cat with id " + id + " was not found!"));
+    }
+
+    public List<RoboticCat> getRoboticCatsByName(String name) {
+        List<RoboticCat> allRoboticCats = getAllRoboticCats();
+        List<RoboticCat> roboticCatsByName = new ArrayList<>();
+        for (RoboticCat roboticCat : allRoboticCats) {
+            if (roboticCat.getName().equals(name)) {
+                roboticCatsByName.add(roboticCat);
+            }
+        }
+        return roboticCatsByName;
     }
 
     public void addRoboticCat(RoboticCat roboticCat) {

@@ -3,6 +3,7 @@ package com.wcci.virtualPetAPI.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,6 +30,11 @@ public class VolunteerController {
         return this.volunteerService.getVolunteerById(id);
     }
 
+    @GetMapping("/volunteers/{name}")
+    public List<Volunteer> findVolunteersByName(@PathVariable String name) {
+        return this.volunteerService.getVolunteersByName(name);
+    }
+
     @PostMapping("/addVolunteer")
     public void addVolunteer(@RequestBody Volunteer volunteer) {
         this.volunteerService.addVolunteer(volunteer);
@@ -37,5 +43,10 @@ public class VolunteerController {
     @PutMapping("/volunteer/{id}")
     public Volunteer modifyVolunteer(@PathVariable long id, @RequestBody Volunteer updatedVolunteer) {
         return this.volunteerService.updateVolunteer(id, updatedVolunteer);
+    }
+
+    @DeleteMapping("/deleteVolunteer/{id}")
+    public void removeVolunteer(@PathVariable long id) {
+        this.volunteerService.deleteVolunteer(id);
     }
 }

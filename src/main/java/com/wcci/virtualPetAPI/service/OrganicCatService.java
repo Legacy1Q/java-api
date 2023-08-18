@@ -1,5 +1,6 @@
 package com.wcci.virtualPetAPI.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,17 @@ public class OrganicCatService {
         return this.organicCatRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Organic cat with id " + id + " was not found!"));
+    }
+
+    public List<OrganicCat> getOrganicCatsByName(String name) {
+        List<OrganicCat> allOrganicCats = getAllOrganicCats();
+        List<OrganicCat> organicCatsByName = new ArrayList<>();
+        for (OrganicCat organicCat : allOrganicCats) {
+            if (organicCat.getName().equals(name)) {
+                organicCatsByName.add(organicCat);
+            }
+        }
+        return organicCatsByName;
     }
 
     public void addOrganicCat(OrganicCat organicCat) {

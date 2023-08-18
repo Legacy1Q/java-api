@@ -1,5 +1,6 @@
 package com.wcci.virtualPetAPI.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,17 @@ public class VolunteerService {
                         "Volunteer with id " + id + " was not found!"));
     }
 
+    public List<Volunteer> getVolunteersByName(String name) {
+        List<Volunteer> allVolunteers = getAllVolunteers();
+        List<Volunteer> volunteersByName = new ArrayList<>();
+        for (Volunteer volunteer : allVolunteers) {
+            if (volunteer.getName().equals(name)) {
+                volunteersByName.add(volunteer);
+            }
+        }
+        return volunteersByName;
+    }
+
     public void addVolunteer(Volunteer volunteer) {
         this.volunteerRepository.save(volunteer);
     }
@@ -36,5 +48,9 @@ public class VolunteerService {
                 .setName(updatedVolunteer.getName() == null ? existingVolunteer.getName() : updatedVolunteer.getName());
         this.volunteerRepository.save(existingVolunteer);
         return existingVolunteer;
+    }
+
+    public void deleteVolunteer(long id) {
+        this.volunteerRepository.deleteById(id);
     }
 }

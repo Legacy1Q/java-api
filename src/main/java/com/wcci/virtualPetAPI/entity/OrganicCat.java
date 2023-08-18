@@ -17,7 +17,6 @@ public class OrganicCat extends OrganicPet {
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "organic_cat_shelter_id")
-
     private VirtualPetShelter virtualPetShelter;
 
     public OrganicCat() {
