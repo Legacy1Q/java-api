@@ -1,5 +1,6 @@
 package com.wcci.virtualPetAPI.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,17 @@ public class VirtualPetShelterService {
         return this.virtualPetShelterRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Virtual pet shelter with id " + id + " was not found!"));
+    }
+
+    public List<VirtualPetShelter> getVirtualPetSheltersByName(String name) {
+        List<VirtualPetShelter> allVirtualPetShelters = getAllShelters();
+        List<VirtualPetShelter> virtualPetSheltersByName = new ArrayList<>();
+        for (VirtualPetShelter virtualPetShelter : allVirtualPetShelters) {
+            if (virtualPetShelter.getName().equals(name)) {
+                virtualPetSheltersByName.add(virtualPetShelter);
+            }
+        }
+        return virtualPetSheltersByName;
     }
 
     public void deleteShelter(long id) {

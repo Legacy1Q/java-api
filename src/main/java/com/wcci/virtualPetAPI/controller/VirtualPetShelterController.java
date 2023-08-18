@@ -30,6 +30,11 @@ public class VirtualPetShelterController {
         return this.virtualPetShelterService.getShelterById(id);
     }
 
+    @GetMapping("/shelters/{name}")
+    public List<VirtualPetShelter> findSheltersByName(@PathVariable String name) {
+        return this.virtualPetShelterService.getVirtualPetSheltersByName(name);
+    }
+
     @PostMapping("/addShelter")
     public void addShelter(@RequestBody VirtualPetShelter virtualPetShelter) {
         this.virtualPetShelterService.addShelter(virtualPetShelter);

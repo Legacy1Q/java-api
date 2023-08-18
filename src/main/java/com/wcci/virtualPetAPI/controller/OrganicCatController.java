@@ -30,6 +30,11 @@ public class OrganicCatController {
         return this.organicCatService.getOrganicCatById(id);
     }
 
+    @GetMapping("/organicCats/{name}")
+    public List<OrganicCat> findOrganicCatsByName(@PathVariable String name) {
+        return this.organicCatService.getOrganicCatsByName(name);
+    }
+
     @PostMapping("/addOrganicCat")
     public void addOrganicCat(@RequestBody OrganicCat organicCat) {
         this.organicCatService.addOrganicCat(organicCat);

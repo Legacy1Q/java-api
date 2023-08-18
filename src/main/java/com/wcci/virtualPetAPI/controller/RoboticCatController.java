@@ -3,6 +3,7 @@ package com.wcci.virtualPetAPI.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +25,16 @@ public class RoboticCatController {
         return this.roboticCatService.getAllRoboticCats();
     }
 
+    @GetMapping("/roboticCat/{id}")
+    public RoboticCat findRoboticCatById(@PathVariable long id) {
+        return this.roboticCatService.getRoboticCatById(id);
+    }
+
+    @GetMapping("/roboticCats/{name}")
+    public List<RoboticCat> findRoboticCatsByName(@PathVariable String name) {
+        return this.roboticCatService.getRoboticCatsByName(name);
+    }
+
     @PostMapping("/addRoboticCat")
     public void addRoboticCat(@RequestBody RoboticCat roboticCat) {
         this.roboticCatService.addRoboticCat(roboticCat);
@@ -32,5 +43,10 @@ public class RoboticCatController {
     @PutMapping("/roboticCat/{id}")
     public RoboticCat modifyRoboticCat(@PathVariable long id, @RequestBody RoboticCat updatedRoboticCat) {
         return this.roboticCatService.updateRoboticCat(id, updatedRoboticCat);
+    }
+
+    @DeleteMapping("/deleteRoboticCat/{id}")
+    public void removePet(@PathVariable long id) {
+        this.roboticCatService.deleteRoboticCat(id);
     }
 }
