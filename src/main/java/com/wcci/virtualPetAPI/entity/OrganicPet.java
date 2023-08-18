@@ -1,8 +1,5 @@
 package com.wcci.virtualPetAPI.entity;
 
-import javax.persistence.Entity;
-
-@Entity
 public abstract class OrganicPet extends VirtualPet {
     private boolean hunger;
     private boolean thirst;
@@ -13,25 +10,29 @@ public abstract class OrganicPet extends VirtualPet {
     public OrganicPet() {
     }
 
-    public OrganicPet(String name, long id) {
-        super(name, id);
-        this.hunger = true;
-        this.thirst = true;
-        this.tiredness = true;
-        this.boredom = true;
-        this.sickness = true;
+    public OrganicPet(String name) {
+        super();
+        this.setName(name);
+        this.setHealth(false);
+        this.setHappiness(false);
+        this.hunger = false;
+        this.thirst = false;
+        this.tiredness = false;
+        this.boredom = false;
+        this.sickness = false;
     }
 
-    public OrganicPet(String name, long id, boolean happiness, boolean hunger, boolean thirst, boolean tiredness,
-            boolean boredom,
-            boolean sickness) {
-        super(name, id);
-        this.hunger = hunger;
-        this.thirst = thirst;
-        this.tiredness = tiredness;
-        this.boredom = boredom;
-        this.sickness = sickness;
+    public OrganicPet(String name, boolean health, boolean happiness, boolean hunger, boolean thirst, boolean tiredness,
+            boolean boredom, boolean sickness) {
+        super();
+        this.setName(name);
+        this.setHealth(health);
         this.setHappiness(happiness);
+        this.setHunger(hunger);
+        this.setThirst(thirst);
+        this.setTiredness(tiredness);
+        this.setBoredom(boredom);
+        this.setSickness(sickness);
     }
 
     public boolean getHunger() {

@@ -1,17 +1,17 @@
 package com.wcci.virtualPetAPI.entity;
 
-import javax.persistence.Entity;
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.MappedSuperclass;
 
-@Entity
-@Table(name = "\"pet\"")
+@MappedSuperclass
 public abstract class VirtualPet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private long id;
     private String name;
     private String description;
@@ -19,13 +19,6 @@ public abstract class VirtualPet {
     private boolean happiness;
 
     public VirtualPet() {
-    }
-
-    public VirtualPet(String name, long id) {
-        this.id = id;
-        this.name = name;
-        this.happiness = true;
-        this.health = true;
     }
 
     public String getName() {
@@ -59,4 +52,21 @@ public abstract class VirtualPet {
     public void setHappiness(boolean happiness) {
         this.happiness = happiness;
     }
+
+    public boolean isHealth() {
+        return this.health;
+    }
+
+    public boolean isHappiness() {
+        return this.happiness;
+    }
+
+    public long getId() {
+        return this.id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
 }
