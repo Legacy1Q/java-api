@@ -19,21 +19,18 @@ public class RoboticDogController {
     @Autowired
     RoboticDogService roboticDogService;
 
+    @GetMapping("/roboticDogs")
+    public List<RoboticDog> findAllRoboticDogs() {
+        return this.roboticDogService.getAllRoboticDogs();
+    }
 
     @PostMapping("/addRoboticDog")
     public void addRoboticDog(@RequestBody RoboticDog roboticDog) {
         this.roboticDogService.addRoboticDog(roboticDog);
     }
 
-    @GetMapping("/roboticDog")
-    public List<RoboticDog> findAllRoboticDogs() {
-        return this.roboticDogService.getAllRoboticDogs();
-    }
-
     @PutMapping("/roboticDog/{id}")
-    public void modifyRoboticDog(@PathVariable long id, @RequestBody RoboticDog updatedPet) {
-        this.roboticDogService.updatedRoboticDog(id, updatedPet);
+    public RoboticDog modifyRoboticDog(@PathVariable long id, @RequestBody RoboticDog updatedRoboticDog) {
+        return this.roboticDogService.updateRoboticDog(id, updatedRoboticDog);
     }
-
 }
-

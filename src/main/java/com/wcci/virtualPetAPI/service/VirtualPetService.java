@@ -13,16 +13,12 @@ import com.wcci.virtualPetAPI.entity.RoboticCat;
 import com.wcci.virtualPetAPI.entity.RoboticDog;
 import com.wcci.virtualPetAPI.entity.VirtualPet;
 import com.wcci.virtualPetAPI.repository.VirtualPetRepository;
-import com.wcci.virtualPetAPI.repository.VirtualPetShelterRepository;
 
 @Service
 public class VirtualPetService {
-    
-    @Autowired
-    private VirtualPetRepository virtualPetRepository;
 
     @Autowired
-    private VirtualPetShelterRepository virtualPetShelterRepository; //Another repository is autowired here.
+    private VirtualPetRepository virtualPetRepository;
 
     public List<VirtualPet> getAllVirtualPets() {
         return this.virtualPetRepository.findAll();

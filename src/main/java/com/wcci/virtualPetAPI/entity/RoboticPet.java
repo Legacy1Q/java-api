@@ -1,8 +1,5 @@
 package com.wcci.virtualPetAPI.entity;
 
-import javax.persistence.Entity;
-
-@Entity
 public abstract class RoboticPet extends VirtualPet {
 
     private boolean oilLevel;
@@ -11,16 +8,22 @@ public abstract class RoboticPet extends VirtualPet {
     public RoboticPet() {
     }
 
-    public RoboticPet(String name, long id) {
-        super(name, id);
-        this.oilLevel = true;
-        this.maintenance = true;
+    public RoboticPet(String name) {
+        super();
+        this.setName(name);
+        this.oilLevel = false;
+        this.maintenance = false;
+        this.setHealth(false);
+        this.setHappiness(false);
     }
 
-    public RoboticPet(String name, long id, boolean happiness, boolean oilLevel, boolean maintenance) {
-        super(name, id);
-        this.oilLevel = oilLevel;
-        this.maintenance = maintenance;
+    public RoboticPet(String name, boolean health, boolean happiness, boolean oilLevel, boolean maintenance) {
+        super();
+        this.setName(name);
+        this.setHealth(health);
+        this.setHappiness(happiness);
+        this.setOilLevel(oilLevel);
+        this.setMaintenance(maintenance);
     }
 
     public boolean getOilLevel() {
