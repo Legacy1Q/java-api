@@ -46,7 +46,7 @@ public class RoboticCatController {
     }
 
     @DeleteMapping("/deleteRoboticCat/{id}")
-    public void removePet(@PathVariable long id) {
+    public void removeRoboticCat(@PathVariable long id) {
         this.roboticCatService.deleteRoboticCat(id);
     }
 }

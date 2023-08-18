@@ -70,21 +70,37 @@ public class Populator implements CommandLineRunner {
                                 false, false, false, false, false);
                 organicDogRepository.save(organicDog);
 
-                List<OrganicDog> organicDogs = Arrays.asList(organicDog);
+                OrganicDog organicDog2 = new OrganicDog("Orgdog2", false, false, false, false,
+                                false, false, false, false, false);
+                organicDogRepository.save(organicDog2);
+
+                List<OrganicDog> organicDogs = Arrays.asList(organicDog, organicDog2);
 
                 RoboticCat roboticCat = new RoboticCat("Robocat",
                                 false, false, false, false);
                 roboticCatRepository.save(roboticCat);
 
+                RoboticCat roboticCat2 = new RoboticCat("Robocat2",
+                                false, false, false, false);
+                roboticCatRepository.save(roboticCat2);
+
+                List<RoboticCat> roboticCats = Arrays.asList(roboticCat, roboticCat2);
+
                 RoboticDog roboticDog = new RoboticDog("Robodog",
                                 false, false, false, false);
                 roboticDogRepository.save(roboticDog);
+
+                RoboticDog roboticDog2 = new RoboticDog("Robodog2",
+                                false, false, false, false);
+                roboticDogRepository.save(roboticDog2);
+
+                List<RoboticDog> roboticDogs = Arrays.asList(roboticDog, roboticDog2);
 
                 VirtualPetShelter shelter = new VirtualPetShelter("Test", "QWE");
                 virtualPetShelterRepository.save(shelter);
 
                 VirtualPetShelter virtualPetShelter = new VirtualPetShelter("Big Al's shelter",
-                                "Pet shelter in town", organicCats, organicDogs, null, null, volunteers);
+                                "Pet shelter in town", organicCats, organicDogs, roboticCats, roboticDogs, volunteers);
                 virtualPetShelterRepository.save(virtualPetShelter);
         }
 }

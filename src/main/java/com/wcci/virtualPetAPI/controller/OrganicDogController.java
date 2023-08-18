@@ -46,7 +46,7 @@ public class OrganicDogController {
     }
 
     @DeleteMapping("/deleteOrganicDog/{id}")
-    public void removePet(@PathVariable long id) {
+    public void removeOrganicDog(@PathVariable long id) {
         this.organicDogService.deleteOrganicDog(id);
     }
 }
